@@ -75,21 +75,11 @@ public class HelloWorld {
         lst.add(inv2);
         
         INSERT lst;
-
-        integer testWhile = 0;
-        
-        while(testWhile < 5){
-            System.debug('Prueba '+testWhile);
-            testWhile++;
-        }
-        
-        testWhile = 5;
-        
-        do{
-           System.debug('Prueba '+testWhile);
-           testWhile++;
-        }while(testWhile < 5);
-
-
     }
 }
+
+/*[FIND '%PROD%' IN ALL FIELDS   
+        RETURNING
+        Inventario__c(Id, Name, Cantidad_Apart__c,
+                           Cantidad_dis__c,
+                           CodigoProd__c)];*/
