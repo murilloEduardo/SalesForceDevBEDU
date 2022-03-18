@@ -1,7 +1,7 @@
 public interface QuotationSync {
     
-        Boolean confirmProductExistsByCode(String codigoProducto);
+        Boolean confirmProductExistsByCode(String productCode);
 
 
-        double searchProductByCode(String codigoProducto);
+        Double searchProductByCode(String productCode);
 }

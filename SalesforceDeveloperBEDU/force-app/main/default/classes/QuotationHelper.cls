@@ -1,5 +1,5 @@
-//Crear dos objetos con la clase QuotationHelper
-public class QuotationHelper {
+//Create 2 Objects with the Class QuotationHelper::::::::::::::::PostWork 1
+public class QuotationHelper implements QuotationSync, Database.Batchable<SObject>, Database.Stateful {
         public void initialConfig(){
             Account acc = new Account();
             acc.Name = 'Compumundo';
@@ -8,29 +8,42 @@ public class QuotationHelper {
             acc2.Name = 'Compuworld';
             	INSERT acc2;
    }
-    // Buscar todos los productos con un método//
+    //Find all of the products with a method called productsInInventory:::::::::::::::::Postwork 2
                  
         public List<Inventario__c> productsInInventory(){
         List<Inventario__c> invActual = [SELECT Id, Name, Cantidad_Apart__c, Cantidad_dis__c, CodigoProd__c FROM Inventario__c];
-                                            return invActual;
+        return invActual;
             }
-   
-    /*public void productsInInventory(){
-        List<Inventario_c> invactual = [SELECT Id, Name, Codigo_Prodc, Cantidad_disc, Cantidad_apartc FROM Inventario_c];
-        system.debug(invactual)
-    }*/
     
     
-    
-        public Boolean confirmProductExistsByCode(String CodigoProducto){
+    //Postwork 3
+
+        public Boolean confirmProductExistsByCode(String productCode){
             Boolean exist = false;
 
-            List<Product2> productList = [SELECT ID FROM Product2 WHERE ExternalID = :CodigoProducto LIMIT 1];
+            List<Product2> productList = [SELECT ID FROM Product2 WHERE ExternalId = :productCode LIMIT 1];
 
             if(productList.size()>0){
                 exist = true;
             }
-
+                return exist;
         }
+
+        public Double searchProductByCode(String productCode){
+            List<Inventario__c> inventory = [SELECT Cantidad_dis__c FROM Inventario__C WHERE CodigoProd__c = :productCode LIMIT 1];
+            if(inventory.size()<=0){
+                system.debug('non existent records');
+                return 0;
+            }else{
+                if(inventory[0].Cantidad_dis__c == null || inventory[0].Cantidad_dis__c < 0){
+                    return 0;
+                }else{
+                    return inventory[0].Cantidad_dis__c;
+                 }
+                }
+                
+            
+        }
+
     
  }
