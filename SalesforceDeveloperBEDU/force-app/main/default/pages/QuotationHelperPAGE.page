@@ -1,0 +1,41 @@
+<apex:page standardController="Quote" extensions="CustomWebInventoryController" >
+    <apex:pageBlock title="Buscar un producto">
+        <apex:form >
+            <apex:outputLabel >Código del Producto: </apex:outputLabel>
+            <apex:inputText value="{!ProductCode}" label="Codigo de producto"/>
+            <apex:commandButton value="find" action="{!find}"/>
+        </apex:form>
+    </apex:pageBlock>
+    <apex:pageBlock title=" Product Details">
+        <apex:form >
+         <table border= "1px">
+            
+       
+              <tr>
+                <th>Nombre del Producto</th>
+                <th>Precio de Lista</th>
+                <th>External Id</th>
+                <th>Cantidad</th>  
+                <th>Disponible</th>
+              </tr>
+              <tr>
+                <td>{!productName}</td>
+                <td>{!productPrice}</td>
+                 <td>{!productExternalId}</td>
+                  <td><apex:inputText value="{!productQuantity}"/>
+                      </td>
+                 <td>{!productInStock}</td>
+              </tr>
+              <tr>
+              </tr>
+	
+        
+         </table>
+            <apex:commandButton value="Cancelar" action="{!cancel}"/>
+            <apex:commandButton value="Atras" action="{!cancel}"/> 
+            <apex:commandButton value="Guardar" action="{!Guardar}"/>
+       </apex:form>
+       
+    </apex:pageBlock>
+    
+</apex:page>

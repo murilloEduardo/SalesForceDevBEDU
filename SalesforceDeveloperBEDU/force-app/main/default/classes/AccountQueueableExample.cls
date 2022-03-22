@@ -7,7 +7,7 @@ public class AccountQueueableExample implements Queueable{
         }
 
         public void execute(QueueableContext context){
-            //Ejecuta nuestro Código
+            
             for(Account acc : accList){
                 acc.Name = acc.Name + 'Bedu';
             }

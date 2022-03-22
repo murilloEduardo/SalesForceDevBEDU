@@ -1,0 +1,18 @@
+<apex:page standardController="Product__c" recordSetVar="products" renderAs="pdf">
+    
+    <h1>
+        This is my first time doing this, be kind, please.
+    </h1>
+    
+    <H1>
+        Tabla de Product.
+    </H1>
+    
+    <apex:dataTable value="{!products}" var="le" border="1px">
+        <apex:column value="{!le.Name}" headerValue="Name"/>
+        <apex:column value="{!le.Precio_de_Venta__c}" headerValue="Precio de Venta"/>
+        <apex:column value="{!le.EXTERNAL_ID__c}" headerValue="External ID"/>
+        <apex:column value="{!le.OwnerId}" headerValue="Propietario"/>
+    </apex:dataTable>
+
+</apex:page>

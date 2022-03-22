@@ -77,9 +77,3 @@ public class HelloWorld {
         INSERT lst;
     }
 }
-
-/*[FIND '%PROD%' IN ALL FIELDS   
-        RETURNING
-        Inventario__c(Id, Name, Cantidad_Apart__c,
-                           Cantidad_dis__c,
-                           CodigoProd__c)];*/

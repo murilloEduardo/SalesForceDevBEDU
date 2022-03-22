@@ -31,18 +31,17 @@ public with sharing class StockEmptyAlert {
     @InvocableMethod (Label = 'Create Post')
     public static void createPost(List<Inventario__c> invList){
         FeedItem post = new FeedItem();
-            List<String> itemsunex = new List<String>();
-            for (Inventario__c item : invList) {
-                if(item.Cantidad_dis__c < 1){
-                    itemsunex.add(item.Name);
-                }
-            }
+       
             post.Body = 'Existen productos en inventario sin existencia';
             post.ParentId = invList[0].Id;
-            // Hace 5 horas
-            Datetime h5h = System.now().addHours(-5);
-    
-            List<FeedItem> fiList = [Select Id FROM FeedItem WHERE LastModifiedDate > :h5h];
+            // Five Hours ago
+            Datetime fiveHours = System.now().addHours(-5);
+
+            List<FeedItem> fiList = [SELECT Id FROM FeedItem WHERE LastModifiedDate > :fiveHours];
+
+            List<Inventario__C> inv  = [SELECT Id FROM Inventario__c WHERE Cantidad_dis__c < 1 LIMIT 1];
+
+
             if (!(fiList.size()>0)) {
                 insert post;
             }
